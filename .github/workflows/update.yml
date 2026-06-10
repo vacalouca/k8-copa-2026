@@ -9,7 +9,6 @@ jobs:
 update:
 runs-on: ubuntu-latest
 
-```
 permissions:
   contents: write
 
@@ -39,4 +38,4 @@ steps:
         git commit -m "Atualização automática da Copa"
         git push
       )
-```
+
