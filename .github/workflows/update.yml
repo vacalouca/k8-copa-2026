@@ -1,21 +1,40 @@
 name: Atualizar Copa 2026
 
 on:
+  schedule:
+    - cron: '0 */6 * * *'
   workflow_dispatch:
 
 jobs:
   update:
     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    permissions:
+      contents: write
 
-      - name: Configurar Python
-        uses: actions/setup-python@v5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Teste
+      - name: Instalar dependências
         run: |
-          echo "Workflow funcionando!"
+          pip install requests
+
+      - name: Atualizar JSON
+        run: |
+          python update.py
+
+      - name: Commit automático
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+          git add dados.json
+
+          if ! git diff --staged --quiet; then
+            git commit -m "Atualização automática"
+            git push
+          fi
