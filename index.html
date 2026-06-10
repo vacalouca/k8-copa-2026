@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>K8 Copa do Mundo 2026</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#071425;
+    color:white;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.header{
+    background:linear-gradient(90deg,#0b1f44,#0f5132);
+    padding:20px;
+}
+
+.top{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.logo{
+    height:80px;
+}
+
+.banner{
+    text-align:center;
+    padding:25px;
+    background:linear-gradient(90deg,#0d2345,#11432f);
+    border-bottom:2px solid #2ee67d;
+}
+
+.banner h1{
+    color:white;
+}
+
+.banner p{
+    margin-top:10px;
+    color:#ddd;
+}
+
+.container{
+    max-width:1400px;
+    margin:auto;
+    padding:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:20px;
+}
+
+.card{
+    background:#172841;
+    border-radius:16px;
+    padding:20px;
+}
+
+.card h2{
+    color:#2ee67d;
+    margin-bottom:15px;
+}
+
+.match{
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    text-align:center;
+}
+
+.match img{
+    width:120px;
+}
+
+.vs{
+    font-size:60px;
+    font-weight:bold;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table th,
+table td{
+    padding:10px;
+    border-bottom:1px solid #2c4466;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+
+.stat{
+    background:#10203b;
+    border-radius:10px;
+    text-align:center;
+    padding:15px;
+}
+
+.stat h2{
+    color:#ffd54f;
+}
+
+.progress{
+    height:24px;
+    background:#0d1728;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.bar{
+    height:100%;
+    width:20%;
+    background:#2ee67d;
+}
+
+.footer{
+    text-align:center;
+    padding:20px;
+    color:#aaa;
+}
+
+@media(max-width:900px){
+
+.grid{
+    grid-template-columns:1fr;
+}
+
+.match{
+    flex-direction:column;
+    gap:15px;
+}
+
+.stats{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<div class="top">
+
+<img src="img/IMG.png" class="logo">
+
+<div>
+<h1>🇧🇷 Copa do Mundo 2026 - K8 Fintech</h1>
+<p>Torcida K8</p>
+</div>
+
+</div>
+
+</div>
+
+<div class="banner">
+
+<h1>🏆 COPA DO MUNDO FIFA 2026</h1>
+
+<p>
+Acompanhe a campanha da Seleção Brasileira rumo ao Hexacampeonato
+</p>
+
+</div>
+
+<div class="container">
+
+<div class="grid">
+
+<div>
+
+<!-- Próximo Jogo -->
+
+<div class="card">
+
+<h2>🇧🇷 Próximo Jogo</h2>
+
+<div id="proximoJogo">
+
+Carregando...
+
+</div>
+
+</div>
+
+<!-- Jogos -->
+
+<div class="card" style="margin-top:20px">
+
+<h2>📅 Jogos do Brasil</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>Data</th>
+<th>Mandante</th>
+<th>Visitante</th>
+<th>Status</th>
+</tr>
+</thead>
+
+<tbody id="jogos">
+
+</tbody>
+
+</table>
+
+</div>
+
+<!-- Notícias -->
+
+<div class="card" style="margin-top:20px">
+
+<h2>📰 Notícias</h2>
+
+<ul id="noticias">
+
+</ul>
+
+</div>
+
+</div>
+
+<!-- Coluna Direita -->
+
+<div>
+
+<!-- Campanha -->
+
+<div class="card">
+
+<h2>📊 Campanha do Brasil</h2>
+
+<div class="stats">
+
+<div class="stat">
+<h2 id="jogosCampanha">0</h2>
+Jogos
+</div>
+
+<div class="stat">
+<h2 id="vitoriasCampanha">0</h2>
+Vitórias
+</div>
+
+<div class="stat">
+<h2 id="empatesCampanha">0</h2>
+Empates
+</div>
+
+<div class="stat">
+<h2 id="derrotasCampanha">0</h2>
+Derrotas
+</div>
+
+<div class="stat">
+<h2 id="golsCampanha">0</h2>
+Gols
+</div>
+
+<div class="stat">
+<h2 id="aproveitamentoCampanha">0%</h2>
+Aproveitamento
+</div>
+
+</div>
+
+</div>
+
+<!-- Classificação -->
+
+<div class="card" style="margin-top:20px">
+
+<h2>🏆 Classificação</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>#</th>
+<th>Seleção</th>
+<th>Pontos</th>
+</tr>
+</thead>
+
+<tbody id="classificacao">
+
+</tbody>
+
+</table>
+
+</div>
+
+<!-- Hexa -->
+
+<div class="card" style="margin-top:20px">
+
+<h2>⭐ Caminho para o Hexa</h2>
+
+<div id="hexa">
+
+Carregando...
+
+</div>
+
+<br>
+
+<div class="progress">
+<div class="bar" id="barraHexa"></div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+K8 Fintech • Copa do Mundo 2026 🇧🇷
+
+</div>
+
+<script>
+
+const flags = {
+    "Brasil":"br",
+    "Marrocos":"ma",
+    "Haiti":"ht",
+    "Escócia":"gb-sct",
+    "Argentina":"ar",
+    "França":"fr",
+    "Alemanha":"de",
+    "Espanha":"es",
+    "Portugal":"pt",
+    "Inglaterra":"gb-eng",
+    "México":"mx",
+    "Estados Unidos":"us"
+};
+
+fetch('dados.json')
+.then(resp => resp.json())
+.then(data => {
+
+    /* ==========================
+       PRÓXIMO JOGO
+    ========================== */
+
+    let jogo = data.proximo_jogo;
+
+    let flagMandante =
+        flags[jogo.mandante]
+        ? `https://flagcdn.com/w160/${flags[jogo.mandante]}.png`
+        : 'https://flagcdn.com/w160/br.png';
+
+    let flagVisitante =
+        flags[jogo.visitante]
+        ? `https://flagcdn.com/w160/${flags[jogo.visitante]}.png`
+        : 'https://flagcdn.com/w160/br.png';
+
+    document.getElementById('proximoJogo').innerHTML = `
+
+        <div class="match">
+
+            <div>
+                <img src="${flagMandante}">
+                <h3>${jogo.mandante}</h3>
+            </div>
+
+            <div>
+
+                <div class="vs">X</div>
+
+                <p>📅 ${jogo.data}</p>
+
+                <p>🕒 ${jogo.hora}</p>
+
+                <p>🏟️ ${jogo.estadio}</p>
+
+                <h2 id="contador"></h2>
+
+            </div>
+
+            <div>
+                <img src="${flagVisitante}">
+                <h3>${jogo.visitante}</h3>
+            </div>
+
+        </div>
+
+    `;
+
+    /* ==========================
+       CONTADOR
+    ========================== */
+
+    try{
+
+        let partes = jogo.data.split('/');
+
+        let alvo = new Date(
+            partes[2] + '-' +
+            partes[1] + '-' +
+            partes[0] +
+            'T' +
+            jogo.hora +
+            ':00'
+        );
+
+        setInterval(() => {
+
+            let agora = new Date();
+
+            let diff = alvo - agora;
+
+            let dias =
+                Math.floor(diff / (1000*60*60*24));
+
+            let horas =
+                Math.floor(
+                    (diff/(1000*60*60)) % 24
+                );
+
+            let minutos =
+                Math.floor(
+                    (diff/(1000*60)) % 60
+                );
+
+            let contador =
+                document.getElementById('contador');
+
+            if(contador){
+
+                contador.innerHTML =
+                `⏳ ${dias}d ${horas}h ${minutos}m`;
+
+            }
+
+        },1000);
+
+    }catch(e){
+        console.log(e);
+    }
+
+    /* ==========================
+       JOGOS DO BRASIL
+    ========================== */
+
+    if(data.jogos_brasil){
+
+        let tbody =
+            document.getElementById('jogos');
+
+        data.jogos_brasil.forEach(j => {
+
+            tbody.innerHTML += `
+            <tr>
+                <td>${j.data}</td>
+                <td>${j.mandante}</td>
+                <td>${j.visitante}</td>
+                <td>${j.status}</td>
+            </tr>
+            `;
+
+        });
+
+    }
+
+    /* ==========================
+       CAMPANHA
+    ========================== */
+
+    if(data.campanha_brasil){
+
+        document.getElementById(
+            'jogosCampanha'
+        ).innerText =
+        data.campanha_brasil.jogos;
+
+        document.getElementById(
+            'vitoriasCampanha'
+        ).innerText =
+        data.campanha_brasil.vitorias;
+
+        document.getElementById(
+            'empatesCampanha'
+        ).innerText =
+        data.campanha_brasil.empates;
+
+        document.getElementById(
+            'derrotasCampanha'
+        ).innerText =
+        data.campanha_brasil.derrotas;
+
+        document.getElementById(
+            'golsCampanha'
+        ).innerText =
+        data.campanha_brasil.gols_marcados;
+
+        document.getElementById(
+            'aproveitamentoCampanha'
+        ).innerText =
+        data.campanha_brasil.aproveitamento + '%';
+
+    }
+
+    /* ==========================
+       CLASSIFICAÇÃO
+    ========================== */
+
+    if(data.classificacao){
+
+        let tabela =
+            document.getElementById(
+                'classificacao'
+            );
+
+        data.classificacao.forEach(t => {
+
+            tabela.innerHTML += `
+            <tr>
+                <td>${t.posicao}</td>
+                <td>${t.time}</td>
+                <td>${t.pontos}</td>
+            </tr>
+            `;
+
+        });
+
+    }
+
+    /* ==========================
+       NOTÍCIAS
+    ========================== */
+
+    if(data.noticias){
+
+        let noticias =
+            document.getElementById(
+                'noticias'
+            );
+
+        data.noticias.forEach(n => {
+
+            noticias.innerHTML += `
+            <li>
+                ${n.data}
+                -
+                ${n.titulo}
+            </li>
+            `;
+
+        });
+
+    }
+
+    /* ==========================
+       CAMINHO PARA O HEXA
+    ========================== */
+
+    if(data.caminho_hexa){
+
+        let etapas = 0;
+
+        if(data.caminho_hexa.fase_grupos)
+            etapas++;
+
+        if(data.caminho_hexa.oitavas)
+            etapas++;
+
+        if(data.caminho_hexa.quartas)
+            etapas++;
+
+        if(data.caminho_hexa.semifinal)
+            etapas++;
+
+        if(data.caminho_hexa.final)
+            etapas++;
+
+        let progresso =
+            (etapas / 5) * 100;
+
+        document.getElementById(
+            'barraHexa'
+        ).style.width =
+        progresso + '%';
+
+        document.getElementById(
+            'hexa'
+        ).innerHTML = `
+            ${data.caminho_hexa.fase_grupos ? '✅' : '⬜'} Fase de Grupos<br>
+            ${data.caminho_hexa.oitavas ? '✅' : '⬜'} Oitavas<br>
+            ${data.caminho_hexa.quartas ? '✅' : '⬜'} Quartas<br>
+            ${data.caminho_hexa.semifinal ? '✅' : '⬜'} Semifinal<br>
+            ${data.caminho_hexa.final ? '✅' : '⬜'} Final
+        `;
+    }
+
+})
+.catch(error => {
+
+    console.error(
+        'Erro ao carregar dados.json',
+        error
+    );
+
+});
+
+</script>
+
+</body>
+
+</html>
