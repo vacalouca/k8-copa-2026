@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Copa do Mundo 2026 - K8 Fintech</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#081321;
+    color:white;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.header{
+    background:linear-gradient(90deg,#0c1f3f,#0f5132);
+    padding:20px;
+}
+
+.top{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.logo{
+    height:80px;
+}
+
+.header h1{
+    color:#2ee67d;
+    margin-bottom:5px;
+}
+
+.banner{
+    text-align:center;
+    padding:30px;
+    background:linear-gradient(90deg,#10203b,#153f2d);
+    border-bottom:2px solid #2ee67d;
+}
+
+.banner h2{
+    font-size:36px;
+    color:#fff;
+}
+
+.banner p{
+    margin-top:10px;
+    color:#ddd;
+}
+
+.container{
+    max-width:1400px;
+    margin:auto;
+    padding:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:20px;
+}
+
+.card{
+    background:#172841;
+    border-radius:14px;
+    padding:20px;
+    transition:all .3s ease;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+.card:hover{
+    transform:translateY(-3px);
+}
+
+.card h2{
+    color:#2ee67d;
+    margin-bottom:15px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table th{
+    background:#10203b;
+}
+
+table th,
+table td{
+    padding:12px;
+    border-bottom:1px solid #2c4466;
+    text-align:left;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+
+.stat{
+    background:#10203b;
+    border-radius:10px;
+    padding:15px;
+    text-align:center;
+}
+
+.stat b{
+    display:block;
+    font-size:28px;
+    color:#ffd54f;
+}
+
+#contador{
+    margin-top:15px;
+    font-size:24px;
+    color:#ffd54f;
+}
+
+.barra{
+    background:#0d1728;
+    border-radius:20px;
+    overflow:hidden;
+    height:25px;
+}
+
+.barra-progresso{
+    background:#2ee67d;
+    width:20%;
+    height:100%;
+}
+
+.news li{
+    margin-bottom:10px;
+}
+
+.footer{
+    text-align:center;
+    padding:30px;
+    color:#aaa;
+}
+
+@media(max-width:900px){
+
+.grid{
+    grid-template-columns:1fr;
+}
+
+.stats{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.logo{
+    height:60px;
+}
+
+.banner h2{
+    font-size:26px;
+}
+
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="header">
+
+<div class="top">
+
+<img src="img/IMG.png" class="logo">
+
+<div>
+<h1>🇧🇷 Copa do Mundo 2026</h1>
+<p>Torcida K8 Fintech</p>
+</div>
+
+</div>
+
+</div>
+
+<div class="banner">
+
+<h2>🏆 COPA DO MUNDO FIFA 2026</h2>
+
+<p>
+Acompanhe a campanha da Seleção Brasileira rumo ao Hexacampeonato
+</p>
+
+</div>
+
+<div class="container">
+
+<div class="grid">
+
+<div>
+
+<div class="card">
+
+<h2>🇧🇷 Próximo Jogo</h2>
+
+<div id="proximoJogo">
+Carregando...
+</div>
+
+<div id="contador"></div>
+
+</div>
+
+<div class="card" style="margin-top:20px;">
+
+<h2>📅 Jogos do Brasil</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>Data</th>
+<th>Mandante</th>
+<th>Visitante</th>
+<th>Status</th>
+</tr>
+</thead>
+
+<tbody id="jogos"></tbody>
+
+</table>
+
+</div>
+
+<div class="card" style="margin-top:20px;">
+
+<h2>📰 Notícias</h2>
+
+<ul class="news" id="noticias"></ul>
+
+</div>
+
+</div>
+
+<div>
+
+<div class="card">
+
+<h2>📊 Campanha do Brasil</h2>
+
+<div class="stats">
+
+<div class="stat">
+<b id="jogosTotal">0</b>
+Jogos
+</div>
+
+<div class="stat">
+<b id="vitorias">0</b>
+Vitórias
+</div>
+
+<div class="stat">
+<b id="empates">0</b>
+Empates
+</div>
+
+<div class="stat">
+<b id="derrotas">0</b>
+Derrotas
+</div>
+
+<div class="stat">
+<b id="gols">0</b>
+Gols
+</div>
+
+<div class="stat">
+<b id="aproveitamento">0%</b>
+Aproveitamento
+</div>
+
+</div>
+
+</div>
+
+<div class="card" style="margin-top:20px;">
+
+<h2>🏆 Classificação Grupo C</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>#</th>
+<th>Seleção</th>
+<th>Pontos</th>
+</tr>
+</thead>
+
+<tbody id="classificacao"></tbody>
+
+</table>
+
+</div>
+
+<div class="card" style="margin-top:20px;">
+
+<h2>⭐ Caminho para o Hexa</h2>
+
+<div id="hexa"></div>
+
+<br>
+
+<div class="barra">
+<div class="barra-progresso"></div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+K8 Fintech • Copa do Mundo 2026 🇧🇷
+</div>
+
+<script>
+
+fetch('dados.json')
+.then(resp => resp.json())
+.then(data => {
+
+let jogo = data.proximo_jogo;
+
+document.getElementById('proximoJogo').innerHTML = `
+<h3>
+${jogo.mandante} 🇧🇷 x 🇲🇦 ${jogo.visitante}
+</h3>
+
+<br>
+
+<p>📅 ${jogo.data} - ${jogo.hora}</p>
+
+<p>🏟️ ${jogo.estadio}</p>
+`;
+
+data.jogos_brasil.forEach(j => {
+
+document.getElementById('jogos').innerHTML += `
+<tr>
+<td>${j.data}</td>
+<td>${j.mandante}</td>
+<td>${j.visitante}</td>
+<td>${j.status}</td>
+</tr>
+`;
+
+});
+
+document.getElementById('jogosTotal').innerText =
+data.campanha_brasil.jogos;
+
+document.getElementById('vitorias').innerText =
+data.campanha_brasil.vitorias;
+
+document.getElementById('empates').innerText =
+data.campanha_brasil.empates;
+
+document.getElementById('derrotas').innerText =
+data.campanha_brasil.derrotas;
+
+document.getElementById('gols').innerText =
+data.campanha_brasil.gols_marcados;
+
+document.getElementById('aproveitamento').innerText =
+data.campanha_brasil.aproveitamento + "%";
+
+data.classificacao.forEach(c => {
+
+document.getElementById('classificacao').innerHTML += `
+<tr>
+<td>${c.posicao}</td>
+<td>${c.time}</td>
+<td>${c.pontos}</td>
+</tr>
+`;
+
+});
+
+data.noticias.forEach(n => {
+
+document.getElementById('noticias').innerHTML += `
+<li>${n.data} - ${n.titulo}</li>
+`;
+
+});
+
+let h = data.caminho_hexa;
+
+document.getElementById('hexa').innerHTML = `
+${h.fase_grupos ? '✅' : '⬜'} Fase de Grupos<br>
+${h.oitavas ? '✅' : '⬜'} Oitavas<br>
+${h.quartas ? '✅' : '⬜'} Quartas<br>
+${h.semifinal ? '✅' : '⬜'} Semifinal<br>
+${h.final ? '✅' : '⬜'} Final
+`;
+
+let dataJogo = new Date(jogo.data + 'T' + jogo.hora + ':00');
+
+setInterval(() => {
+
+let agora = new Date();
+
+let diff = dataJogo - agora;
+
+let dias = Math.floor(diff / (1000*60*60*24));
+let horas = Math.floor((diff/(1000*60*60)) % 24);
+let minutos = Math.floor((diff/(1000*60)) % 60);
+
+document.getElementById('contador').innerHTML =
+`⏳ ${dias} dias ${horas}h ${minutos}m`;
+
+},1000);
+
+});
+
+</script>
+
+</body>
+</html>

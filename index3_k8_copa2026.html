@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K8 Copa 2026 - Index 3.0</title>
+<style>
+body{margin:0;background:#071425;color:#fff;font-family:Arial,sans-serif}
+.header{background:linear-gradient(90deg,#0b1f44,#0f5132);padding:15px}
+.top{display:flex;align-items:center;gap:20px}
+.logo{height:80px}
+.banner{padding:25px;text-align:center;background:linear-gradient(90deg,#0d2345,#11432f);border-bottom:2px solid #2ee67d}
+.container{max-width:1400px;margin:auto;padding:20px}
+.grid{display:grid;grid-template-columns:2fr 1fr;gap:20px}
+.card{background:#172841;border-radius:16px;padding:20px}
+.card h2{color:#2ee67d;margin-top:0}
+.match{display:flex;justify-content:space-around;align-items:center;text-align:center}
+.match img{width:120px;border-radius:8px}
+.vs{font-size:50px;font-weight:bold}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat{background:#10203b;padding:15px;border-radius:10px;text-align:center}
+table{width:100%;border-collapse:collapse}
+th,td{padding:10px;border-bottom:1px solid #2c4466}
+.progress{height:24px;background:#0d1728;border-radius:20px;overflow:hidden}
+.bar{height:100%;width:20%;background:#2ee67d}
+.footer{text-align:center;padding:20px;color:#aaa}
+</style>
+</head>
+<body>
+<div class="header">
+<div class="top">
+<img src="img/IMG.png" class="logo">
+<div><h1>🇧🇷 Copa do Mundo 2026 - K8 Fintech</h1><p>Torcida K8</p></div>
+</div></div>
+
+<div class="banner">
+<h1>🏆 COPA DO MUNDO FIFA 2026</h1>
+<p>Acompanhe a campanha da Seleção Brasileira rumo ao Hexa</p>
+</div>
+
+<div class="container">
+<div class="grid">
+<div>
+<div class="card">
+<h2>Próximo Jogo</h2>
+<div class="match">
+<div><img src="https://flagcdn.com/w160/br.png"><h3>BRASIL</h3></div>
+<div><div class="vs">X</div><p>13/06/2026</p><p>13:00 (Horário de Brasília)</p><p>MetLife Stadium</p><h2 id="contador"></h2></div>
+<div><img src="https://flagcdn.com/w160/ma.png"><h3>MARROCOS</h3></div>
+</div>
+</div>
+
+<div class="card" style="margin-top:20px">
+<h2>Jogos do Brasil</h2>
+<table>
+<tr><th>Data</th><th>Mandante</th><th>Visitante</th><th>Status</th></tr>
+<tr><td>13/06/2026</td><td>🇧🇷 Brasil</td><td>🇲🇦 Marrocos</td><td>Agendado</td></tr>
+<tr><td>19/06/2026</td><td>🇧🇷 Brasil</td><td>🇭🇹 Haiti</td><td>Agendado</td></tr>
+<tr><td>24/06/2026</td><td>🏴 Escócia</td><td>🇧🇷 Brasil</td><td>Agendado</td></tr>
+</table>
+</div>
+
+<div class="card" style="margin-top:20px">
+<h2>Notícias</h2>
+<ul>
+<li>Brasil inicia preparação para a Copa 2026</li>
+<li>Convocados da Seleção serão anunciados</li>
+<li>Brasil estreia contra Marrocos</li>
+</ul>
+</div>
+</div>
+
+<div>
+<div class="card">
+<h2>Campanha do Brasil</h2>
+<div class="stats">
+<div class="stat"><h2>0</h2>Jogos</div>
+<div class="stat"><h2>0</h2>Vitórias</div>
+<div class="stat"><h2>0</h2>Empates</div>
+<div class="stat"><h2>0</h2>Derrotas</div>
+<div class="stat"><h2>0</h2>Gols</div>
+<div class="stat"><h2>0%</h2>Aproveitamento</div>
+</div>
+</div>
+
+<div class="card" style="margin-top:20px">
+<h2>Classificação Grupo C</h2>
+<table>
+<tr><th>#</th><th>Seleção</th><th>P</th></tr>
+<tr><td>1</td><td>🇧🇷 Brasil</td><td>0</td></tr>
+<tr><td>2</td><td>🇲🇦 Marrocos</td><td>0</td></tr>
+<tr><td>3</td><td>🏴 Escócia</td><td>0</td></tr>
+<tr><td>4</td><td>🇭🇹 Haiti</td><td>0</td></tr>
+</table>
+</div>
+
+<div class="card" style="margin-top:20px">
+<h2>Caminho para o Hexa</h2>
+<p>✅ Fase de Grupos</p>
+<p>⬜ Oitavas</p>
+<p>⬜ Quartas</p>
+<p>⬜ Semifinal</p>
+<p>⬜ Final</p>
+<br>
+<div class="progress"><div class="bar"></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">K8 Fintech • Copa do Mundo 2026</div>
+<script>
+const alvo=new Date('2026-06-13T13:00:00');
+setInterval(()=>{
+let d=alvo-new Date();
+let dias=Math.floor(d/86400000);
+let horas=Math.floor(d/3600000)%24;
+let min=Math.floor(d/60000)%60;
+document.getElementById('contador').innerText=`⏳ ${dias}d ${horas}h ${min}m`;
+},1000);
+</script>
+</body></html>
